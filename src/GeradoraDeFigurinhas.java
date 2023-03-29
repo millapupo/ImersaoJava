@@ -14,29 +14,24 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
-
-
 import javax.imageio.ImageIO;
 
 public class GeradoraDeFigurinhas {
 
-	public void cria (String texto) throws Exception {
-		
+	public void cria (String texto) throws Exception {		
 			
-		//leitura da imagem	
+//	leitura da imagem	
 //      InputStream inputStream = new URL("https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@.jpg")
 //                    .openStream();		
-		//BufferedImage imagemOriginal = ImageIO.read(InputStream); TIRAR MARCAÇÃO
-		
-		BufferedImage imagemOriginal = ImageIO.read(new File("src/Entrada/capa-maior.jpg")); //TIRAR PARA SUBIR 
-				
-		//cria nova imagem em memória e com novo tamanho
-		int largura = imagemOriginal.getWidth();
+	BufferedImage imagemOriginal = ImageIO.read(InputStream); 
+						
+	//cria nova imagem em memória e com novo tamanho
+	int largura = imagemOriginal.getWidth();
         int altura = imagemOriginal.getHeight();
         int novaAltura = altura + 200;
         BufferedImage novaImagem = new BufferedImage(largura, novaAltura, BufferedImage.TRANSLUCENT);
 		
-		//copiar a imagem original para nova imagem (em memória)
+	//copiar a imagem original para nova imagem (em memória)
         Graphics2D graphics = (Graphics2D) novaImagem.getGraphics();
         graphics.drawImage(imagemOriginal, 0, 0, null);
         
@@ -45,7 +40,7 @@ public class GeradoraDeFigurinhas {
         graphics.setColor(Color.RED);
         graphics.setFont(fonte);
 		
-		//escrever uma frase na nova imagem e centralizar
+	//escrever uma frase na nova imagem e centralizar
         String textoFigurinha = "TOPZERA";
         FontMetrics fontMetrics = graphics.getFontMetrics();
         Rectangle2D retangulo = fontMetrics.getStringBounds(textoFigurinha, graphics);
@@ -69,20 +64,7 @@ public class GeradoraDeFigurinhas {
         graphics.draw(outline);
         graphics.setClip(outline);
         
-		//escrever a nova imagem em um arquivo  
-        
-        //ImageIO.write(novaImagem, "png", new File(figurInha)); TIRAR MARCAÇÃO PARA SUBIR
-        
-        ImageIO.write(novaImagem, "png", new File("src/Saida/figurinha2.png"));    //TIRAR PARA SUBIR 
-        
-
-	}
-	// TIRAR PARA SUBIR
-	public static void main(String[] args) throws Exception {
-		
-		var geradora = new GeradoraDeFigurinhas();
-		geradora.cria("TOPSTER");
-		
-	}
-
+	//escrever a nova imagem em um arquivo          
+        ImageIO.write(novaImagem, "png", new File(figurInha));         
+       	}
 }
