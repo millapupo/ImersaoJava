@@ -18,14 +18,12 @@ import javax.imageio.ImageIO;
 
 public class GeradoraDeFigurinhas {
 
-	public void cria (String texto) throws Exception {		
+	public void cria (InputStream inputStream, String nomeArquivo, String texto) throws Exception {		
 			
 		//leitura da imagem	
 		//InputStream inputStream = new URL("https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@.jpg")
 		           //.openStream();		
-		//BufferedImage imagemOriginal = ImageIO.read(InputStream); 
-
-		BufferedImage imagemOriginal = ImageIO.read(new File("src/Entrada/capa-maior.jpg"));  
+		BufferedImage imagemOriginal = ImageIO.read(inputStream);   
 						
 		//cria nova imagem em memória e com novo tamanho
 		int largura = imagemOriginal.getWidth();
@@ -38,7 +36,7 @@ public class GeradoraDeFigurinhas {
         graphics.drawImage(imagemOriginal, 0, 0, null);
         
         //configurar a fonte
-        var fonte = new Font(Font.SANS_SERIF, Font.BOLD, 86);
+        var fonte = new Font(Font.SANS_SERIF, Font.BOLD, 76);
         graphics.setColor(Color.RED);
         graphics.setFont(fonte);
 		
@@ -66,15 +64,9 @@ public class GeradoraDeFigurinhas {
         graphics.draw(outline);
         graphics.setClip(outline);
         
-        //escrever a nova imagem em um arquivo          
-        //ImageIO.write(novaImagem, "png", new File(figurinha)); 
-
-        ImageIO.write(novaImagem, "png", new File("src/Saida/figurinha2.png"));   
+        //escrever a nova imagem em um arquivo      
+         ImageIO.write(novaImagem, "png", new File(nomeArquivo));   
 }
-		// main para testar
-		public static void main(String[] args) throws Exception {
-			var geradora = new GeradoraDeFigurinhas();
-			geradora.cria("TOPSTER");
-			}        
+
 }
 
