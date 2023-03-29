@@ -33,7 +33,13 @@ public class App {
         	System.out.println("\u001b[37;1m" + "\u001b[41;1m" + "Title: " + filme.get("title") + "\u001b[0m");
             System.out.println("\u001b[1m" + "Poster: " + "\u001b[0m" + filme.get("image") + "\u001b[0m");
             System.out.println("\u001b[1m" + "Rate: " + "\u001b[0m" + filme.get("imDbRating") + "\u001b[0m");
-            System.out.println();         
+            double rating = Double.parseDouble(filme.get("imDbRating"));
+            int estrelas = (int) rating;
+            for( int e = 1; e <= estrelas; e++) {
+            	 System.out.print("🌟");    
+            }
+            System.out.println("\n");
+                
                                 
            
         }
