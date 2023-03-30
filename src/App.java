@@ -9,33 +9,34 @@ public class App {
     public static void main(String[] args) throws Exception {
 
         // fazer uma conexão HTTP      
-        //String url = "https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/TopMovies.json";
-        String url = "https://api.nasa.gov/planetary/apod?api_key=7PT1fOjvuQl2y3FRSkOpshykSsOTcL23Uad0Ycgv&start_date=2022-10-12&end_date=2022-10-14";
+        String url = "https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/TopMovies.json";
+    	ExtratorDeConteudoDoIMDB extrator = new ExtratorDeConteudoDoIMDB();
+    	
+        //String url = "https://api.nasa.gov/planetary/apod?api_key=7PT1fOjvuQl2y3FRSkOpshykSsOTcL23Uad0Ycgv&start_date=2022-06-14&end_date=2022-06-17";
+        //ExtratorDeConteudoDaNasa extrator = new ExtratorDeConteudoDaNasa();
         
         var http = new ClienteHttp();
-        String json = http.buscaDados(url);
-        
-        // extrair só os dados que interessam 
-        var parser = new JsonParser();
-        List<Map<String, String>> listaDeConteudo = parser.parse(json);
+        String json = http.buscaDados(url);        
         
         var diretorio = new File("Saida/");
         diretorio.mkdir();
               
-        // exibir e manipular os dados 
+        // exibir e manipular os dados         
+        List<Conteudo> conteudos = extrator.extraiConteudos(json);        
+        
         var geradora = new GeradoraDeFigurinhas();
-        for (int index = 0; index < 3; index++) {
-        	var conteudo = listaDeConteudo.get(index);        	
-        	
-            String urlImagem = conteudo.get("url");
-            String titulo = conteudo.get("title");              
-            String texto = "porra";
-                      
-            String urlImage = conteudo.get("url").replaceAll("(@+)(.*).jpg$", "$1.jpg");            
-            InputStream inputStream = new URL(urlImagem).openStream();
-            String nomeArquivo = titulo + ".png";
+        
+        for (int i = 0; i < 3; i++) {
+        	Conteudo conteudo = conteudos.get(i);
+            
+        	String texto = "UAU";                 
+         	
+            InputStream inputStream = new URL(conteudo.getUrlImagem()).openStream();
+            String nomeArquivo = "Saida/" + conteudo.getTitulo() + ".png";
+            
             geradora.cria(inputStream, nomeArquivo, texto);
-            System.out.println(titulo);
+             
+            System.out.println(conteudo.getTitulo());
             System.out.println();                                
             }
     }

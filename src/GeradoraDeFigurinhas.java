@@ -41,9 +41,10 @@ public class GeradoraDeFigurinhas {
         graphics.setFont(fonte);
 		
         //escrever uma frase na nova imagem e centralizar
-        String textoFigurinha = "TOPZERA";
+        
+        //String textoFigurinha = "caralho";
         FontMetrics fontMetrics = graphics.getFontMetrics();
-        Rectangle2D retangulo = fontMetrics.getStringBounds(textoFigurinha, graphics);
+        Rectangle2D retangulo = fontMetrics.getStringBounds(texto, graphics);
         int larguraTexto = (int) retangulo.getWidth();
         int posicaoTextoX = (largura - larguraTexto) /2;        
         int posicaoTextoY = novaAltura - 100;
