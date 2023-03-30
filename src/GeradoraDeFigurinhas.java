@@ -21,8 +21,6 @@ public class GeradoraDeFigurinhas {
 	public void cria (InputStream inputStream, String nomeArquivo, String texto) throws Exception {		
 			
 		//leitura da imagem	
-		//InputStream inputStream = new URL("https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@.jpg")
-		           //.openStream();		
 		BufferedImage imagemOriginal = ImageIO.read(inputStream);   
 						
 		//cria nova imagem em memória e com novo tamanho
@@ -38,11 +36,9 @@ public class GeradoraDeFigurinhas {
         //configurar a fonte
         var fonte = new Font(Font.SANS_SERIF, Font.BOLD, 76);
         graphics.setColor(Color.RED);
-        graphics.setFont(fonte);
-		
-        //escrever uma frase na nova imagem e centralizar
+        graphics.setFont(fonte);     
         
-        //String textoFigurinha = "caralho";
+        //String textoFigurinha = "teste";
         FontMetrics fontMetrics = graphics.getFontMetrics();
         Rectangle2D retangulo = fontMetrics.getStringBounds(texto, graphics);
         int larguraTexto = (int) retangulo.getWidth();

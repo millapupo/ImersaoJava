@@ -8,7 +8,7 @@ public class App {
 
     public static void main(String[] args) throws Exception {
 
-        // fazer uma conexão HTTP      
+        //fazer uma conexão HTTP      
         //String url = "https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/TopMovies.json";
     	//ExtratorDeConteudo extrator = new ExtratorDeConteudoDoIMDB();
     	
@@ -29,9 +29,8 @@ public class App {
         for (int i = 0; i < 3; i++) {
         	Conteudo conteudo = conteudos.get(i);
             
-        	String texto = "UAU";                 
-         	
-            InputStream inputStream = new URL(conteudo.getUrlImagem()).openStream();
+        	String texto = "UAU";             
+         	InputStream inputStream = new URL(conteudo.getUrlImagem()).openStream();
             String nomeArquivo = "Saida/" + conteudo.getTitulo() + ".png";
             
             geradora.cria(inputStream, nomeArquivo, texto);
