@@ -9,11 +9,11 @@ public class App {
     public static void main(String[] args) throws Exception {
 
         // fazer uma conexão HTTP      
-        String url = "https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/TopMovies.json";
-    	ExtratorDeConteudoDoIMDB extrator = new ExtratorDeConteudoDoIMDB();
+        //String url = "https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/TopMovies.json";
+    	//ExtratorDeConteudo extrator = new ExtratorDeConteudoDoIMDB();
     	
-        //String url = "https://api.nasa.gov/planetary/apod?api_key=7PT1fOjvuQl2y3FRSkOpshykSsOTcL23Uad0Ycgv&start_date=2022-06-14&end_date=2022-06-17";
-        //ExtratorDeConteudoDaNasa extrator = new ExtratorDeConteudoDaNasa();
+        String url = "https://api.nasa.gov/planetary/apod?api_key=7PT1fOjvuQl2y3FRSkOpshykSsOTcL23Uad0Ycgv&start_date=2022-06-14&end_date=2022-06-17";
+        ExtratorDeConteudo extrator = new ExtratorDeConteudoDaNasa();
         
         var http = new ClienteHttp();
         String json = http.buscaDados(url);        
