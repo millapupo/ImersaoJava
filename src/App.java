@@ -10,10 +10,11 @@ public class App {
 
         //fazer uma conexão HTTP      
         //String url = "https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/TopMovies.json";
-    	//ExtratorDeConteudo extrator = new ExtratorDeConteudoDoIMDB();
+        String url = "http://localhost:8080/linguagens";
+    	ExtratorDeConteudo extrator = new ExtratorDeConteudoDoIMDB();
     	
-        String url = "https://api.nasa.gov/planetary/apod?api_key=7PT1fOjvuQl2y3FRSkOpshykSsOTcL23Uad0Ycgv&start_date=2022-06-14&end_date=2022-06-17";
-        ExtratorDeConteudo extrator = new ExtratorDeConteudoDaNasa();
+        //String url = "https://api.nasa.gov/planetary/apod?api_key=7PT1fOjvuQl2y3FRSkOpshykSsOTcL23Uad0Ycgv&start_date=2022-06-14&end_date=2022-06-17";
+        //ExtratorDeConteudo extrator = new ExtratorDeConteudoDaNasa();
         
         var http = new ClienteHttp();
         String json = http.buscaDados(url);        
@@ -26,10 +27,10 @@ public class App {
         
         var geradora = new GeradoraDeFigurinhas();
         
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 5; i++) {
         	Conteudo conteudo = conteudos.get(i);
             
-        	String texto = "UAU";             
+        	String texto = "Uau";             
          	InputStream inputStream = new URL(conteudo.getUrlImagem()).openStream();
             String nomeArquivo = "Saida/" + conteudo.getTitulo() + ".png";
             
